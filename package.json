@@ -1,0 +1,15 @@
+{
+  "name": "printer-api",
+  "version": "1.0.0",
+  "description": "A REST API for managing 3d printer files",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shawn.reisner@gmail.com",
+  "dependencies": {
+      "express": "^4.13.4",
+      "mongoose": "^4.4.6",
+      "url": "^0.11.0"
+  }
+}
