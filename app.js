@@ -176,4 +176,8 @@ app.get('/', function(request, response) {
     response.sendFile(path.join(__dirname, 'static', 'views', 'index.html'));
 });
 
+app.get('/upload', function(request, response) {
+    response.sendFile(path.join(__dirname, 'static', 'views', 'upload.html'));
+});
+
 app.listen(process.argv[2] || 5000);
