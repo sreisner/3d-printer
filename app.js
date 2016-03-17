@@ -1,20 +1,20 @@
 var url = require('url');
-var mongoose = require('mongoose');
-var express = require('express');
 var path = require('path');
 var morgan = require('morgan');
-var bodyParser = require('body-parser');
 var multer  = require('multer');
 var upload = multer({ dest : 'uploads/' });
 var fs = require('fs');
-var app = express();
+var uuid = require('uuid');
 
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27018/printer');
-
 var Category = mongoose.model('Category', {
     name: String
 });
@@ -24,17 +24,18 @@ var Plastic = mongoose.model('Plastic', {
 });
 
 var Print = mongoose.model('Print', {
-    name: String,
-    data: String,
+    dataId: String,
+    categoryId: String,
+    imageId: String,
     title: String,
     description: String,
     plastics: Array,
-    supports: Boolean,
-    category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: Category
-    }
+    supports: Boolean
 });
+
+var Grid = require('gridfs-stream');
+Grid.mongo = mongoose.mongo;
+var gfs = Grid(mongoose.connection.db);
 
 app.get('/api/print', function(request, response) {
     var filter = {};
@@ -42,7 +43,7 @@ app.get('/api/print', function(request, response) {
     if(query.category) {
         filter.category = query.category;
     }
-    Print.find(filter, 'name title description plastics category supports').exec(function(err, prints) {
+    Print.find(filter).exec(function(err, prints) {
         if(err) {
             response.json({
                 'error': err
@@ -53,8 +54,8 @@ app.get('/api/print', function(request, response) {
     });
 });
 
-app.get('/api/print/:print_id', function(request, response) {
-    var printId = request.params.print_id
+app.get('/api/print/:printId', function(request, response) {
+    var printId = request.params.printId
     Print.findOne({ _id: printId }, 'data', function(err, print) {
         if(err) {
             response.json({
@@ -66,17 +67,42 @@ app.get('/api/print/:print_id', function(request, response) {
     });
 });
 
-app.post('/api/print', upload.single('gcode'), function(request, response) {
-    fs.readFile(request.file.path, function(err, data) {
-        fs.unlink(request.file.path);
+app.get('/api/grid/:gridId', function(request, response) {
+    var gridId = request.params.gridId;
+
+    gfs.findOne({ _id: gridId }, function(err, metadata) {
         if(err) {
             response.json({
                 'error': err
             });
             return;
         }
-        var print = new Print();
-        print.data = data;
+        var readStream = gfs.createReadStream({
+            _id: gridId
+        });
+        response.writeHead(200, {'Content-Type': metadata.contentType });
+        readStream.pipe(response);
+        readStream.on('close', function() {
+            response.end();
+        });
+    });
+});
+
+var uploadedFileMetadata = upload.fields([{ name: 'STL', maxCount: 1 }, { name: 'photo', maxCount: 8 }])
+app.post('/api/print', uploadedFileMetadata, function(request, response) {
+    var print = new Print();
+
+    var stlMetadata = request.files['STL'][0];
+    var imageMetadata = request.files['photo'][0];
+    var gridPromises = [
+        uploadFileToGridFS(stlMetadata.path, 'binary/octet-stream'),
+        uploadFileToGridFS(imageMetadata.path, 'image/jpeg')
+    ];
+    Promise.all(gridPromises).then(function(gridIds) {
+        print.dataId = gridIds[0];
+        print.imageId = gridIds[1];
+        fs.unlink(stlMetadata.path);
+        fs.unlink(imageMetadata.path);
         print.category = request.body.category;
         print.title = request.body.title;
         print.description = request.body.description;
@@ -101,10 +127,26 @@ app.post('/api/print', upload.single('gcode'), function(request, response) {
                 return;
             }
 
-            response.json({});
+            response.redirect('/');
         });
     });
 });
+
+function uploadFileToGridFS(filePath, mimeType) {
+    return new Promise(function(resolve, reject) {
+        var readStream = fs.createReadStream(filePath);
+        var gridFilename = uuid.v1();
+        var writeStream = gfs.createWriteStream({
+            filename: gridFilename,
+            mode: 'w',
+            content_type: mimeType
+        });
+        readStream.pipe(writeStream);
+        writeStream.on('close', function(file) {
+            resolve(file._id);
+        });
+    });
+}
 
 app.get('/api/category', function(request, response) {
     Category.find({}).exec(function(err, categories) {
