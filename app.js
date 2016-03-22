@@ -55,7 +55,7 @@ app.get('/api/print', function(request, response) {
 });
 
 app.get('/api/print/:printId', function(request, response) {
-    var printId = request.params.printId
+    var printId = request.params.printId;
     Print.findOne({ _id: printId }, 'data', function(err, print) {
         if(err) {
             response.json({
@@ -88,12 +88,12 @@ app.get('/api/grid/:gridId', function(request, response) {
     });
 });
 
-var uploadedFileMetadata = upload.fields([{ name: 'STL', maxCount: 1 }, { name: 'photo', maxCount: 8 }])
+var uploadedFileMetadata = upload.fields([{ name: 'STL', maxCount: 1 }, { name: 'photo', maxCount: 8 }]);
 app.post('/api/print', uploadedFileMetadata, function(request, response) {
     var print = new Print();
 
-    var stlMetadata = request.files['STL'][0];
-    var imageMetadata = request.files['photo'][0];
+    var stlMetadata = request.files.STL[0];
+    var imageMetadata = request.files.photo[0];
     var gridPromises = [
         uploadFileToGridFS(stlMetadata.path, 'binary/octet-stream'),
         uploadFileToGridFS(imageMetadata.path, 'image/jpeg')
@@ -169,7 +169,7 @@ app.get('/api/plastic', function(request, response) {
             return;
         }
         response.json(plastics);
-    })
+    });
 });
 
 app.get('/', function(request, response) {
