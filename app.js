@@ -41,7 +41,7 @@ app.get('/api/print', function(request, response) {
     var filter = {};
     var query = url.parse(request.url, true).query;
     if(query.category) {
-        filter.category = query.category;
+        filter.categoryId = query.category;
     }
     Print.find(filter).exec(function(err, prints) {
         if(err) {
@@ -103,7 +103,7 @@ app.post('/api/print', uploadedFileMetadata, function(request, response) {
         print.imageId = gridIds[1];
         fs.unlink(stlMetadata.path);
         fs.unlink(imageMetadata.path);
-        print.category = request.body.category;
+        print.categoryId = request.body.category;
         print.title = request.body.title;
         print.description = request.body.description;
         // If a single plastic is selected it doesn't come in as an array,
