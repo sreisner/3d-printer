@@ -6,9 +6,9 @@ $(document).ready(function() {
             data.forEach(function(print) {
                 var downloadFileName = print.title.substring(0, 20).split(' ').join('-') + '.stl';
                 gallery.append('\
-                    <a href="/api/grid/' + print.dataId + '" download="' + downloadFileName + '">\
+                    <a href="/api/grid/' + print.gridFileId + '" download="' + downloadFileName + '">\
                         <div class="print">\
-                            <img src="/api/grid/' + print.imageId + '">\
+                            <img src="/api/grid/' + print.gridPictureIds[0] + '">\
                             <p>' + print.title + '</p>\
                         </div>\
                     </a>');
