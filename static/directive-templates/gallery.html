@@ -1,0 +1,8 @@
+<div class="gallery">
+  <a ng-repeat="print in galleryCtrl.prints" href="/api/grid/{{ print.gridFileId }}" download="{{ print.downloadFileName }}">
+    <div class="print">
+      <img ng-src="/api/grid/{{ print.gridPictureIds[0] }}">
+      <p>{{ print.title }}</p>
+    </div>
+  </a>
+</div>

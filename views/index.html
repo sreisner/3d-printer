@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="printApp">
+<html ng-app="printer-app">
   <head>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
@@ -13,6 +13,7 @@
 
     <!-- Angular App -->
     <script src="/static/js/app.js"></script>
+    <script src="/static/js/gallery.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/site.css">
@@ -25,13 +26,6 @@
         <a class="nav-link nav-link-grow-up" href="/upload">Upload</a>
       </div>
     </div>
-    <div class="gallery" ng-controller="GalleryController as gallery">
-      <a ng-repeat="print in gallery.prints" href="/api/grid/{{ print.gridFileId }}" download="{{ print.downloadFileName }}">
-        <div class="print">
-          <img ng-src="/api/grid/{{ print.gridPictureIds[0] }}">
-          <p>{{ print.title }}</p>
-        </div>
-      </a>
-    </div>
+    <gallery></gallery>
   </body>
 </html>
