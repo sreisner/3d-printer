@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="printApp">
   <head>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+
+    <!-- Angular App -->
+    <script src="/static/js/app.js"></script>
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/css/site.css">
     <link rel="stylesheet" href="/static/css/gallery.css">
-    <script src="/static/js/site.js"></script>
-    <script src="/static/js/gallery.js"></script>
   </head>
   <body>
     <div class="nav">
@@ -21,7 +25,13 @@
         <a class="nav-link nav-link-grow-up" href="/upload">Upload</a>
       </div>
     </div>
-    <div class="gallery">
+    <div class="gallery" ng-controller="GalleryController as gallery">
+      <a ng-repeat="print in gallery.prints" href="/api/grid/{{ print.gridFileId }}" download="{{ print.downloadFileName }}">
+        <div class="print">
+          <img ng-src="/api/grid/{{ print.gridPictureIds[0] }}">
+          <p>{{ print.title }}</p>
+        </div>
+      </a>
     </div>
   </body>
 </html>
