@@ -10,16 +10,6 @@
 
     var models = require('./models');
 
-    function initializeRoutes(app) {
-        initializeStaticRoute(app);
-        initializeApiRoutes(app);
-        initializePageRoutes(app);
-    }
-
-    function initializeStaticRoute(app) {
-        app.use('/static', express.static(path.join(__dirname, 'static')));
-    }
-
     function initializeApiRoutes(app) {
         app.get('/api/print', function(request, response) {
             var filter = {};
@@ -178,17 +168,7 @@
         });
     }
 
-    function initializePageRoutes(app) {
-        app.all('/', function(request, response) {
-            response.sendFile(path.join(__dirname, 'views', 'index.html'));
-        });
-
-        app.all('/upload', function(request, response) {
-            response.sendFile(path.join(__dirname, 'views', 'upload.html'));
-        });
-    }
-
     module.exports = {
-        initializeRoutes: initializeRoutes
+        initializeRoutes: initializeApiRoutes
     };
 })();
