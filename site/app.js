@@ -29,5 +29,11 @@
                 restrict: 'E',
                 templateUrl: './directives/gallery-item.html'
             };
+        })
+        .directive('siteNav', function () {
+            return {
+                restrict: 'E',
+                templateUrl: './directives/site-nav.html'
+            }
         });
 }());
