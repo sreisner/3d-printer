@@ -54,7 +54,8 @@ module.exports = function(grunt) {
                 files: {
                     './dist/css/home.min.css': [
                         './build/css/global.min.css',
-                        './build/css/gallery.min.css'
+                        './build/css/gallery.min.css',
+                        './build/css/nav.min.css'
                     ]
                 }
             }
@@ -64,7 +65,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['./site/**/*'],
+                files: ['./site/**/*', './Gruntfile.js'],
                 tasks: ['build']
             }
         }
