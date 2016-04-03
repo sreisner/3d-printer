@@ -1,7 +1,10 @@
 module.exports = function(grunt) {
     'use strict';
+
+    var path = require('path');
+
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('./package.json'),
         jslint: {
             client: {
                 src: [
@@ -65,8 +68,19 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['./site/**/*', './Gruntfile.js'],
+                files: ['./site/**/*'],
                 tasks: ['build']
+            }
+        },
+        express: {
+            all: {
+                options: {
+                    hostname: 'localhost',
+                    port: 5001,
+                    bases: path.resolve(__dirname, 'dist'),
+                    server: path.resolve(__dirname, 'server.js'),
+                    livereload: true
+                }
             }
         }
     });
@@ -77,6 +91,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('build', [
@@ -87,4 +102,6 @@ module.exports = function(grunt) {
         'concat',
         'exec:cleanup'
     ]);
+
+    grunt.registerTask('livereload', ['express:all', 'watch']);
 };

@@ -1,18 +1,7 @@
-'use strict';
-
 (function() {
-    var path = require('path');
-    var express = require('express');
-    var app = express();
+    'use strict';
 
-    const DIST_PATH = path.join(__dirname, 'dist');
-    app.use('/javascript', express.static(path.join(DIST_PATH, 'javascript')));
-    app.use('/css', express.static(path.join(DIST_PATH, 'css')));
-
-    app.get('/', function(request, response) {
-        response.sendFile(path.join(__dirname, 'site', 'index.html'));
-    });
-
+    var app = require('./server');
     var port = process.argv[2] || 5000;
     app.listen(port, function() {
         console.log('Listening on port', port);
