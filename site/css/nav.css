@@ -2,10 +2,30 @@
     background-color: #5863F8;
 }
 
-nav a {
-    color: #EFE9F4 !important;
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-toggle .icon-bar {
+    color: #EFE9F4;
 }
 
-.icon-bar {
-    background-color: #EFE9F4 !important;
+.navbar-default .navbar-header:hover .navbar-brand,
+.navbar-default .navbar-nav > li > a:hover,
+.nav-link.active {
+    color: #FFF !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0px;
+    transition: 200ms;
+    background-color: #EFE9F4;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    height: 5px;
 }
