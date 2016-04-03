@@ -5,6 +5,7 @@
 
 .panel-default > .panel-footer {
     background-color: #FFF;
+    color: #000;
 }
 
 .panel-default > .panel-footer > .panel-title {
