@@ -1,11 +1,31 @@
+/* xs devices and below */
+@media(max-width: 767px) {
+    .panel-body {
+        height: 75vw;
+    }
+}
+
+/* small devices and above */
+@media(min-width: 768px) {
+    .panel-body {
+        height: 25vw;
+    }
+}
+
+/* large devices and above */
+@media(min-width: 1200px) {
+    .panel-body {
+        height: 20vw;
+    }
+}
+
 .panel-default {
-    margin: 4%;
     cursor: pointer;
 }
 
 .panel-default > .panel-footer {
     background-color: #FFF;
-    color: #000;
+    color: #171D1C;
 }
 
 .panel-default > .panel-footer > .panel-title {
@@ -14,14 +34,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     height: 1.25em;
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 
 .panel-body {
     position: relative;
-    height: 25vw;
     overflow: hidden;
-    background: transparent;
+    background: #EFE9F4;
     border-radius: 4px 4px 0 0;
 }
 
@@ -41,9 +60,10 @@
 }
 
 .panel-body > .description > p {
-    line-height: 2em;
+    line-height: 1.75em;
     font-weight: bold;
     font-size: 1.2em;
+    color: #171D1C;
 }
 
 .panel-body > * {
@@ -51,7 +71,7 @@
 }
 
 .panel-default:hover > .panel-body > img {
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 .panel-default:hover > .panel-body > .description {

@@ -1,3 +1,11 @@
 .navbar {
-    background-color: #FFF;
+    background-color: #5863F8;
+}
+
+nav a {
+    color: #EFE9F4 !important;
+}
+
+.icon-bar {
+    background-color: #EFE9F4 !important;
 }
