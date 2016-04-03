@@ -3,11 +3,11 @@
     cursor: pointer;
 }
 
-.panel-default > .panel-heading {
+.panel-default > .panel-footer {
     background-color: #FFF;
 }
 
-.panel-default > .panel-heading > .panel-title {
+.panel-default > .panel-footer > .panel-title {
     overflow-x: hidden;
     word-wrap: break-word;
     white-space: nowrap;
@@ -21,7 +21,7 @@
     height: 25vw;
     overflow: hidden;
     background: transparent;
-    border-radius: 0 0 4px 4px;
+    border-radius: 4px 4px 0 0;
 }
 
 .panel-body > img {
