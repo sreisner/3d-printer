@@ -34,11 +34,12 @@
 }
 
 .panel-body > .description {
+    overflow-y: hidden;
+    max-height: 100%;
     opacity: 0;
 }
 
 .panel-body > .description > p {
-    overflow-y: hidden;
     line-height: 2em;
     font-weight: bold;
     font-size: 1.2em;
