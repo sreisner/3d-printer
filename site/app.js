@@ -27,13 +27,17 @@
         .directive('galleryItem', function () {
             return {
                 restrict: 'E',
-                templateUrl: './directives/gallery-item.html'
+                templateUrl: './directives/gallery-item.html',
+                controller: 'GalleryController',
+                controllerAs: 'galleryCtrl'
             };
         })
         .directive('siteNav', function () {
             return {
                 restrict: 'E',
-                templateUrl: './directives/site-nav.html'
+                templateUrl: './directives/site-nav.html',
+                controller: 'NavController',
+                controllerAs: 'navCtrl'
             }
         });
 }());
