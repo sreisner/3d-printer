@@ -64,7 +64,8 @@ module.exports = function(grunt) {
                     './dist/css/login.min.css': [
                         './build/css/global.min.css',
                         './build/css/nav.min.css',
-                        './build/css/login.min.css'
+                        './build/css/login.min.css',
+                        './build/css/form.min.css'
                     ]
                 }
             }

@@ -1,0 +1,14 @@
+.login-container {
+    position: relative;
+    max-height: 50rem;
+    background: #FFF;
+    padding: 10rem;
+    border-radius: 4px;
+}
+
+.login-container > h1 {
+    margin: 0;
+    margin-top: -5rem;  /* Center the form */
+    margin-bottom: 1rem;
+    font-size: 4rem;
+}

@@ -1,0 +1,62 @@
+.tall, .tall .input {
+  min-height: 8rem;
+}
+
+.grande, .grande .input {
+  min-height: 12rem;
+}
+
+.venti, .venti .input {
+  min-height: 24rem;
+}
+
+.segment {
+  position: relative;
+  border: 1px solid #CCC;
+}
+
+.segment > label {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.9);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  background: transparent;
+}
+
+.input-container .input {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  padding: 3.5rem 1rem 0 1rem;
+  font-size: 2rem;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+.segment .submit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 2.5em;
+  background-color: #48FB3F;
+  color: #FFFFFF;
+}
+
+.submit-segment {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
