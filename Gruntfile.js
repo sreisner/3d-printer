@@ -30,7 +30,9 @@ module.exports = function(grunt) {
                 files: {
                     './build/javascript/home.js': [
                         './site/javascript/global.js',
-                        './site/app.js'
+                        './site/modules/app.js',
+                        './site/modules/nav.js',
+                        './site/modules/gallery.js'
                     ],
                     './build/javascript/login.js': ['./site/javascript/global.js']
                 }
