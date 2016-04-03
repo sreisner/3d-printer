@@ -4,6 +4,7 @@
     var express = require('express');
     var bodyParser = require('body-parser');
     var path = require('path');
+    var cors = require('cors');
     var app = express();
 
     var routes = require('./routes');
@@ -11,6 +12,7 @@
 
     app.use(morgan('dev'));
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(cors());
 
     app.db = db.connect('mongodb://localhost:27018/printer');
     routes.initializeRoutes(app);
