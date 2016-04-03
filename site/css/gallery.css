@@ -12,6 +12,9 @@
     word-wrap: break-word;
     white-space: nowrap;
     text-overflow: ellipsis;
+    height: 1.25em;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .panel-body {
