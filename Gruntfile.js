@@ -28,7 +28,8 @@ module.exports = function(grunt) {
                     ]
                 },
                 files: {
-                    './build/javascript/home.js': ['./site/javascript/global.js']
+                    './build/javascript/home.js': ['./site/javascript/global.js'],
+                    './build/javascript/login.js': ['./site/javascript/global.js']
                 }
             }
         },
@@ -57,8 +58,13 @@ module.exports = function(grunt) {
                 files: {
                     './dist/css/home.min.css': [
                         './build/css/global.min.css',
-                        './build/css/gallery.min.css',
-                        './build/css/nav.min.css'
+                        './build/css/nav.min.css',
+                        './build/css/gallery.min.css'
+                    ],
+                    './dist/css/login.min.css': [
+                        './build/css/global.min.css',
+                        './build/css/nav.min.css',
+                        './build/css/login.min.css'
                     ]
                 }
             }
