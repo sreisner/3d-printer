@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="/css/home.min.css">
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top" ng-controller="NavController as navCtrl">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" ng-click="navCtrl.setPage(1)" href>
             <i class="fa fa-cubes fa-lg"></i>
+            3D Prints
           </a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible-navbar" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -19,13 +20,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">3D Prints</a>
         </div>
 
         <div class="collapse navbar-collapse" id="collapsible-navbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a class="nav-link active" href="/">Home</a></li>
-            <li><a class="nav-link" href="/login">Login</a></li>
+            <li><a class="nav-link" ng-class="{ active:navCtrl.isSelected(1) }" ng-click="navCtrl.setPage(1)" href>Home</a></li>
+            <li><a class="nav-link" ng-class="{ active:navCtrl.isSelected(2) }" ng-click="navCtrl.setPage(2)" href>Login</a></li>
           </ul>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
@@ -40,19 +40,7 @@
     <div class="container-fluid">
       <div class="gallery">
         <div class="row" ng-controller="GalleryController as galleryCtrl">
-          <div class="col-sm-4 col-lg-3" ng-repeat="print in galleryCtrl.prints">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <img ng-src="http://localhost:8080/api/grid/{{ print.gridPictureIds[0] }}">
-                <div class="description">
-                  <p>{{ print.description }}</p>
-                </div>
-              </div>
-              <div class="panel-footer">
-                <h3 class="panel-title">{{ print.title }}</h3>
-              </div>
-            </div>
-          </div>
+          <gallery-item ng-repeat="print in galleryCtrl.prints"></gallery-item>
         </div>
       </div>
     </div>

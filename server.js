@@ -6,8 +6,10 @@
     var app = express();
 
     const DIST_PATH = path.join(__dirname, 'dist');
+    const SITE_PATH = path.join(__dirname, 'site');
     app.use('/javascript', express.static(path.join(DIST_PATH, 'javascript')));
     app.use('/css', express.static(path.join(DIST_PATH, 'css')));
+    app.use('/directives', express.static(path.join(SITE_PATH, 'directives')))
 
     app.get('/', function(request, response) {
         response.sendFile(path.join(__dirname, 'site', 'index.html'));
