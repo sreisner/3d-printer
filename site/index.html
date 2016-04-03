@@ -9,11 +9,7 @@
   <body>
     <site-nav></site-nav>
     <div class="container-fluid">
-      <div class="gallery">
-        <div class="row" ng-controller="GalleryController as galleryCtrl">
-          <gallery-item ng-repeat="print in galleryCtrl.prints"></gallery-item>
-        </div>
-      </div>
+      <gallery></gallery>
     </div>
     <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

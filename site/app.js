@@ -24,10 +24,10 @@
                     console.log(reason);
                 });
         }])
-        .directive('galleryItem', function () {
+        .directive('gallery', function () {
             return {
                 restrict: 'E',
-                templateUrl: './directives/gallery-item.html',
+                templateUrl: './directives/gallery.html',
                 controller: 'GalleryController',
                 controllerAs: 'galleryCtrl'
             };
