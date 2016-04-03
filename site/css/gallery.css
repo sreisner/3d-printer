@@ -22,6 +22,7 @@
     height: 25vw;
     overflow: hidden;
     background: transparent;
+    border-radius: 0 0 4px 4px;
 }
 
 .panel-body > img {
@@ -35,18 +36,23 @@
 
 .panel-body > .description {
     opacity: 0;
+}
+
+.panel-body > .description > p {
     overflow-y: hidden;
     line-height: 2em;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .panel-body > * {
     transition: 200ms opacity;
 }
 
-.panel-body:hover > img {
-    opacity: 0.1;
+.panel-default:hover > .panel-body > img {
+    opacity: 0.2;
 }
 
-.panel-body:hover > .description {
+.panel-default:hover > .panel-body > .description {
     opacity: 1;
 }
