@@ -1,0 +1,49 @@
+.panel-default {
+    margin: 2%;
+    cursor: pointer;
+}
+
+.panel-default > .panel-heading {
+    background-color: #FFF;
+}
+
+.panel-default > .panel-heading > .panel-title {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.panel-body {
+    position: relative;
+    height: 25vw;
+    overflow: hidden;
+    background: transparent;
+}
+
+.panel-body > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.panel-body > .description {
+    opacity: 0;
+    overflow-y: hidden;
+    line-height: 2em;
+}
+
+.panel-body > * {
+    transition: 200ms opacity;
+}
+
+.panel-body:hover > img {
+    opacity: 0.1;
+}
+
+.panel-body:hover > .description {
+    opacity: 1;
+}
