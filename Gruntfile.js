@@ -14,7 +14,7 @@ module.exports = function(grunt) {
                     browser: true,
                     devel: true,
                     es6: true,
-                    predef: ['$']
+                    predef: ['$', 'angular']
                 }
             }
         },
@@ -28,7 +28,10 @@ module.exports = function(grunt) {
                     ]
                 },
                 files: {
-                    './build/javascript/home.js': ['./site/javascript/global.js'],
+                    './build/javascript/home.js': [
+                        './site/javascript/global.js',
+                        './site/javascript/app.js'
+                    ],
                     './build/javascript/login.js': ['./site/javascript/global.js']
                 }
             }
@@ -80,10 +83,10 @@ module.exports = function(grunt) {
             }
         },
         express: {
-            all: {
+            site: {
                 options: {
                     hostname: 'localhost',
-                    port: 5001,
+                    port: 80,
                     bases: path.resolve(__dirname, 'dist'),
                     server: path.resolve(__dirname, 'server.js'),
                     livereload: true
@@ -110,5 +113,5 @@ module.exports = function(grunt) {
         'exec:cleanup'
     ]);
 
-    grunt.registerTask('livereload', ['express:all', 'watch']);
+    grunt.registerTask('livereload', ['express:site', 'watch']);
 };
