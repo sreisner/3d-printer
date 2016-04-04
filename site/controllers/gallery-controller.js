@@ -7,7 +7,7 @@
             controller.prints = [];
             controller.currentPrint = null;
 
-            $http.get('http://localhost:8080/api/print')
+            $http.get('http://ec2-52-207-246-149.compute-1.amazonaws.com:8080/api/print')
                 .then(function (response) {
                     controller.prints = response.data;
                 })
