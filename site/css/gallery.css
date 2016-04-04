@@ -8,14 +8,21 @@
 /* small devices and above */
 @media(min-width: 768px) {
     .panel-body {
-        height: 25vw;
+        height: 345px;
+    }
+}
+
+/* medium devices and above */
+@media(min-width: 992px) {
+    .panel-body {
+        height: 293.328px;
     }
 }
 
 /* large devices and above */
 @media(min-width: 1200px) {
     .panel-body {
-        height: 20vw;
+        height: 262.5px;
     }
 }
 

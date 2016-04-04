@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4 col-lg-3" ng-repeat="print in galleryCtrl.prints">
+    <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="print in galleryCtrl.prints">
       <div ng-click="galleryCtrl.showModal(print)" class="panel panel-default">
         <div class="panel-body">
           <img ng-src="http://ec2-52-207-246-149.compute-1.amazonaws.com:8080/api/grid/{{ print.gridPictureIds[0] }}">
