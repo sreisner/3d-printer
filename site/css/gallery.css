@@ -77,3 +77,7 @@
 .panel-default:hover > .panel-body > .description {
     opacity: 1;
 }
+
+#print-modal .main-image-container > img {
+    width: 100%;
+}

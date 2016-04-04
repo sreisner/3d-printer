@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         jslint: {
             client: {
                 src: [
-                    './site/javascript/*.js'
+                    './site/**/*.js'
                 ],
                 directives: {
                     browser: true,
@@ -31,10 +31,12 @@ module.exports = function(grunt) {
                     './build/javascript/home.js': [
                         './site/javascript/global.js',
                         './site/modules/app.js',
-                        './site/modules/nav.js',
-                        './site/modules/gallery.js'
-                    ],
-                    './build/javascript/login.js': ['./site/javascript/global.js']
+                        './site/modules/routes.js',
+                        './site/controllers/gallery-controller.js',
+                        './site/controllers/nav-controller.js',
+                        './site/directives/gallery-directive.js',
+                        './site/directives/nav-directive.js'
+                    ]
                 }
             }
         },
@@ -64,11 +66,7 @@ module.exports = function(grunt) {
                     './dist/css/home.min.css': [
                         './build/css/global.min.css',
                         './build/css/nav.min.css',
-                        './build/css/gallery.min.css'
-                    ],
-                    './dist/css/login.min.css': [
-                        './build/css/global.min.css',
-                        './build/css/nav.min.css',
+                        './build/css/gallery.min.css',
                         './build/css/login.min.css',
                         './build/css/form.min.css'
                     ]
