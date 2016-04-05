@@ -19,5 +19,12 @@
                 controller.currentPrint = print;
                 $('#print-modal').modal('show');
             };
+
+            this.getDownloadName = function (print) {
+                return print.title
+                    .substring(0, 20)
+                    .replace(/[^a-zA-Z\s]*/g, '')
+                    .replace(/[\s]+/g, '-') + '.stl';
+            };
         }]);
 }());

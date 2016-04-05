@@ -86,6 +86,30 @@
 }
 
 /* Modal style */
+#print-modal .modal-dialog {
+    width: 75vw;
+}
+
+#print-modal .modal-header button {
+    margin: 0 1rem;
+}
+
+#print-modal .main-image-container {
+    float: left;
+    width: 66%;
+    padding: 2rem;
+}
+
 #print-modal .main-image-container > img {
     width: 100%;
+}
+
+#print-modal .detail-container {
+    float: right;
+    width: 34%;
+    padding: 2rem;
+}
+
+#print-modal .detail-container p {
+    font-size: 2rem;
 }

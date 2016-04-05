@@ -14,7 +14,8 @@ module.exports = function(grunt) {
                     browser: true,
                     devel: true,
                     es6: true,
-                    predef: ['$', 'angular']
+                    predef: ['$', 'angular'],
+                    regexp: true
                 }
             }
         },
