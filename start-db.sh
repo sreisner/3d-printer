@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mongod --dbpath=./data --port=27018
+mongod --dbpath=./data --port=27017

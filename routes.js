@@ -155,6 +155,19 @@
             });
         });
 
+        app.get('/api/category/:categoryId', function(request, response) {
+            var categoryId = request.params.categoryId;
+            app.db.models.Category.findOne({ _id: categoryId }, function(err, category) {
+              if(err) {
+                  response.json({
+                      'error': err
+                  });
+                  return;
+              }
+              response.json(category);
+            });
+        });
+
         app.get('/api/plastic', function(request, response) {
             app.db.models.Plastic.find().exec(function(err, plastics) {
                 if(err) {

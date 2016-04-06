@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nodemon app.js 5001
+node app.js 8080

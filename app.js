@@ -14,7 +14,7 @@
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(cors());
 
-    app.db = db.connect('mongodb://localhost:27018/printer');
+    app.db = db.connect('mongodb://localhost:27017/printer');
     routes.initializeRoutes(app);
 
     var port = process.argv[2];
