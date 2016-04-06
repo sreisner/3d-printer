@@ -12,3 +12,6 @@
 
 # To start server:
 - Run `node index.js <port>`.
+
+# To start server with live reload (recommended):
+- Run `grunt livereload'.`
