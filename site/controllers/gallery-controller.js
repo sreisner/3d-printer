@@ -8,7 +8,7 @@
       self.prints = [];
       self.currentPrint = null;
 
-      $http.get('${API_URL}/api/print')
+      $http.get(`${API_URL}/api/print`)
         .then(function(response) {
           self.prints = response.data;
         })
@@ -28,10 +28,8 @@
             self.currentPrint.categoryName = 'Unable to retrieve category.';
             console.log(reason);
           });
-      };
 
-      this.getDownloadName = function(print) {
-        return print.title
+        self.currentPrint.downloadName = print.title
           .substring(0, 20)
           .replace(/[^a-zA-Z\s]*/g, '')
           .replace(/[\s]+/g, '-') + '.stl';
