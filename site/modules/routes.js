@@ -1,8 +1,8 @@
-(function () {
+(function() {
   'use strict';
 
   angular.module('app')
-    .config(['$routeProvider', function ($routeProvider) {
+    .config(['$routeProvider', function($routeProvider) {
       $routeProvider
         .when('/', {
           templateUrl: '../templates/pages/home/index.html'

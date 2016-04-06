@@ -1,8 +1,8 @@
-(function () {
+(function() {
   'use strict';
 
   angular.module('nav')
-    .directive('siteNav', function () {
+    .directive('siteNav', function() {
       return {
         restrict: 'E',
         templateUrl: 'directives/templates/site-nav.html',

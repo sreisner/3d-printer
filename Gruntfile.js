@@ -10,13 +10,6 @@ module.exports = function(grunt) {
         target: ['./site/**/*.js'],
         options: {
           config: '.eslintrc.json'
-        },
-        env: {
-          'browser': true
-        },
-        globals: {
-          '$': true,
-          'angular': true
         }
       }
     },
@@ -24,8 +17,8 @@ module.exports = function(grunt) {
       all: {
         options: {
           transform: [
-            ["babelify", {
-              "presets": ['es2015']
+            ['babelify', {
+              presets: ['es2015']
             }]
           ]
         },

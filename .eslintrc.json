@@ -1,3 +1,13 @@
 {
-  "extends": "google"
+  "extends": "google",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "angular": true,
+    "$": true
+  },
+  "rules": {
+    "quotes": [2, "single"]
+  }
 }
