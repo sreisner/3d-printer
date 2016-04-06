@@ -5,17 +5,11 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('./package.json'),
-        jslint: {
+        eslint: {
             client: {
-                src: [
-                    './site/**/*.js'
-                ],
-                directives: {
-                    browser: true,
-                    devel: true,
-                    es6: true,
-                    predef: ['$', 'angular'],
-                    regexp: true
+                target: ['./site/**/*.js'],
+                options: {
+                    config: '.eslintrc.json'
                 }
             }
         },
@@ -96,7 +90,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-jslint');
+    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -106,7 +100,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('build', [
-        'jslint',
+        'eslint',
         'browserify',
         'uglify',
         'cssmin',
