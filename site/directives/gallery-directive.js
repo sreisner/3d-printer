@@ -10,4 +10,4 @@
         controllerAs: 'galleryCtrl'
       };
     });
-}());
+})();

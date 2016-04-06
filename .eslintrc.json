@@ -1,7 +1,9 @@
 {
   "extends": "google",
   "env": {
-    "browser": true
+    "browser": true,
+    "es6": true,
+    "jquery": true
   },
   "globals": {
     "angular": true,

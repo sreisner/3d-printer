@@ -14,4 +14,4 @@
           templateUrl: '../templates/pages/home/index.html'
         });
     }]);
-}());
+})();

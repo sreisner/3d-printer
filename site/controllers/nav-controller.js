@@ -13,4 +13,4 @@
         return this.page === page;
       };
     });
-}());
+})();
