@@ -1,111 +1,111 @@
 /* xs devices and below */
 @media(max-width: 767px) {
-    .panel-body {
-        height: 75vw;
-    }
+  .panel-body {
+    height: 75vw;
+  }
 }
 
 /* small devices and above */
 @media(min-width: 768px) {
-    .panel-body {
-        height: 345px;
-    }
+  .panel-body {
+    height: 345px;
+  }
 }
 
 /* medium devices and above */
 @media(min-width: 992px) {
-    .panel-body {
-        height: 293.328px;
-    }
+  .panel-body {
+    height: 293.328px;
+  }
 }
 
 /* large devices and above */
 @media(min-width: 1200px) {
-    .panel-body {
-        height: 262.5px;
-    }
+  .panel-body {
+    height: 262.5px;
+  }
 }
 
 .panel-default {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .panel-default > .panel-footer {
-    background-color: #FFF;
-    color: #171D1C;
+  background-color: #FFF;
+  color: #171D1C;
 }
 
 .panel-default > .panel-footer > .panel-title {
-    overflow-x: hidden;
-    word-wrap: break-word;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    height: 1.25em;
-    font-size: 1.25em;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 1.25em;
+  font-size: 1.25em;
 }
 
 .panel-body {
-    position: relative;
-    overflow: hidden;
-    background: #EFE9F4;
-    border-radius: 4px 4px 0 0;
+  position: relative;
+  overflow: hidden;
+  background: #EFE9F4;
+  border-radius: 4px 4px 0 0;
 }
 
 .panel-body > img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .panel-body > .description {
-    overflow-y: hidden;
-    max-height: 100%;
-    opacity: 0;
+  overflow-y: hidden;
+  max-height: 100%;
+  opacity: 0;
 }
 
 .panel-body > .description > p {
-    line-height: 1.75em;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #171D1C;
+  line-height: 1.75em;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #171D1C;
 }
 
 .panel-body > * {
-    transition: 200ms opacity;
+  transition: 200ms opacity;
 }
 
 .panel-default:hover > .panel-body > img {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .panel-default:hover > .panel-body > .description {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Modal style */
 #print-modal .modal-dialog {
-    width: 75vw;
+  width: 75vw;
 }
 
 #print-modal .modal-header button {
-    margin: 0 1rem;
+  margin: 0 1rem;
 }
 
 #print-modal .main-image-container {
-    float: left;
-    width: 66%;
-    padding: 2rem;
+  float: left;
+  width: 66%;
+  padding: 2rem;
 }
 
 #print-modal .main-image-container > img {
-    width: 100%;
+  width: 100%;
 }
 
 #print-modal .detail-container {
-    float: right;
-    width: 34%;
-    padding: 2rem;
+  float: right;
+  width: 34%;
+  padding: 2rem;
 }
