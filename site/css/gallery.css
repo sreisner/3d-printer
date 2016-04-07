@@ -90,6 +90,10 @@
   width: 75vw;
 }
 
+#print-modal .modal-title > .category {
+  font-weight: bold;
+}
+
 #print-modal .modal-header button {
   margin: 0 1rem;
 }

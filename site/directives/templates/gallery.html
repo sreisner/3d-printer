@@ -7,7 +7,7 @@
       <a href="http://ec2-52-207-246-149.compute-1.amazonaws.com:8080/api/grid/{{ galleryCtrl.currentPrint.gridFileId }}" download="{{ galleryCtrl.currentPrint.downloadName }}">
       <button type="button" class="close" aria-label="Download"><i class="fa fa-download fa-2x"></i></button>
       </a>
-      <h3 class="modal-title">{{ galleryCtrl.currentPrint.title }}</h3>
+      <h3 class="modal-title"><span class="category">{{ galleryCtrl.currentPrint.categoryName }}</span> // {{ galleryCtrl.currentPrint.title }}</h3>
     </div>
     <div class="modal-body clearfix">
       <div class="main-image-container">
@@ -16,8 +16,6 @@
       <div class="detail-container">
         <h4>Description</h4>
         <p>{{ galleryCtrl.currentPrint.description }}</p>
-        <h4>Category</h4>
-        <p>{{ galleryCtrl.currentPrint.categoryName }}</p>
       </div>
     </div>
     </div>
