@@ -15,7 +15,8 @@
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(cors());
 
-    app.db = db.connect('mongodb://localhost:27017/printer');
+    var mongodb_url = process.argv[3];
+    app.db = db.connect(mongodb_url);
     routes.initializeRoutes(app);
     auth.initializeFacebookAuth(app);
 
