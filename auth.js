@@ -14,10 +14,14 @@
       callbackURL: "/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-      app.db.User.findOne({ facebookId: profile.id }, function(err, user) {
+      app.db.models.User.findOne({ facebookId: profile.id }, function(err, user) {
         if (err) {
-          console.error(err);
-          return done(err);
+          var user = app.db.models.User.insert({
+            facebookId: profile.id,
+            name: profile.displayName,
+            userSince: new Date()
+          });
+          return done(null, user);
         }
         done(null, user);
       });
@@ -25,8 +29,8 @@
 
     app.get('/auth/facebook', passport.authenticate('facebook'));
     app.get('/auth/facebook/callback',
-      passport.authenticate('facebook', { successRedirect: '/',
-                                          failureRedirect: '/login' }));
+      passport.authenticate('facebook', { successRedirect: 'http://ec2-52-207-246-149.compute-1.amazonaws.com/',
+                                          failureRedirect: 'http://ec2-52-207-246-149.compute-1.amazonaws.com/' }));
   }
 
   module.exports = {

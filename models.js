@@ -32,7 +32,8 @@
             userSince: Date,
             bio: String,
             prints: Array,
-            location: String
+            location: String,
+            facebookId: String
         }),
 
         Plastic: mongoose.model('Plastic', {
