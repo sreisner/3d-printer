@@ -29,8 +29,8 @@
 
     app.get('/auth/facebook', passport.authenticate('facebook'));
     app.get('/auth/facebook/callback',
-      passport.authenticate('facebook', { successRedirect: 'http://ec2-52-207-246-149.compute-1.amazonaws.com/',
-                                          failureRedirect: 'http://ec2-52-207-246-149.compute-1.amazonaws.com/' }));
+      passport.authenticate('facebook', { successRedirect: '/',
+                                          failureRedirect: '/' }));
   }
 
   module.exports = {
