@@ -1,14 +1,13 @@
 (function() {
   'use strict';
 
-  const API_URL = 'http://ec2-52-207-246-149.compute-1.amazonaws.com:8080';
   angular.module('gallery')
     .controller('GalleryController', ['$http', function($http) {
       var self = this;
       self.prints = [];
       self.currentPrint = null;
 
-      $http.get(`${API_URL}/api/print`)
+      $http.get('/api/print')
         .then(function(response) {
           self.prints = response.data;
         })
@@ -20,7 +19,7 @@
         self.currentPrint = print;
         $('#print-modal').modal('show');
 
-        $http.get(`${API_URL}/api/category/${print.categoryId}`)
+        $http.get(`/api/category/${print.categoryId}`)
           .then(function(response) {
             self.currentPrint.categoryName = response.data.name;
           })

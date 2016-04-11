@@ -82,8 +82,8 @@ module.exports = function(grunt) {
     express: {
       site: {
         options: {
-          hostname: 'localhost',
-          port: 80,
+          hostname: '127.0.0.1',
+          port: 8080,
           bases: path.resolve(__dirname, 'dist'),
           server: path.resolve(__dirname, 'server.js'),
           livereload: true
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.registerTask('build', [
-    'eslint',
+//    'eslint',
     'browserify',
     'uglify',
     'cssmin',
