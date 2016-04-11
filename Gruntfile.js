@@ -70,8 +70,19 @@ module.exports = function(grunt) {
         }
       }
     },
-    exec: {
-      cleanup: 'rm -rf ./build'
+    shell: {
+      npmInstall: {
+        command: 'npm install'
+      },
+      cleanup: {
+        command: 'rm -rf ./build'
+      },
+      startDatabase: {
+        command: [
+          'if not exist "data" mkdir data',
+          'mongod --dbpath=./data'
+        ].join('&&')
+      }
     },
     watch: {
       scripts: {
@@ -83,7 +94,7 @@ module.exports = function(grunt) {
       site: {
         options: {
           hostname: '127.0.0.1',
-          port: 8080,
+          port: 80,
           bases: path.resolve(__dirname, 'dist'),
           server: path.resolve(__dirname, 'server.js'),
           livereload: true
@@ -99,16 +110,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express');
-  grunt.loadNpmTasks('grunt-exec');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('build', [
-//    'eslint',
+    'shell:npmInstall',
+    'eslint',
     'browserify',
     'uglify',
     'cssmin',
     'concat',
-    'exec:cleanup'
+    'shell:cleanup'
   ]);
 
-  grunt.registerTask('livereload', ['express:site', 'watch']);
+  grunt.registerTask('livereload', [
+    'shell:startDatabase',
+    'express:site',
+    'watch'
+  ]);
 };
