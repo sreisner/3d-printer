@@ -1,11 +1,7 @@
 (function() {
     'use strict';
-    var morgan = require('morgan');
-    var express = require('express');
     var bodyParser = require('body-parser');
-    var path = require('path');
     var cors = require('cors');
-    var app = express();
 
     var routes = require('./routes');
     var db = require('./db');
