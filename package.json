@@ -2,7 +2,7 @@
   "name": "3d-printer-site",
   "version": "1.0.0",
   "description": "3D Printer API web client",
-  "main": "run.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

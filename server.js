@@ -1,20 +1,13 @@
 (function() {
   'use strict';
 
-  var path = require('path');
-  var express = require('express');
-  var app = express();
+  var app = require('./server');
+  var api = require('printer-api');
 
-  const DIST_PATH = path.join(__dirname, 'dist');
-  const SITE_PATH = path.join(__dirname, 'site');
-  app.use('/javascript', express.static(path.join(DIST_PATH, 'javascript')));
-  app.use('/css', express.static(path.join(DIST_PATH, 'css')));
-  app.use('/directives', express.static(path.join(SITE_PATH, 'directives')));
-  app.use('/templates', express.static(path.join(SITE_PATH, 'templates')));
+  api(app, 'mongodb://localhost/printer');
 
-  app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname, 'site', 'index.html'));
+  var port = process.argv[2] || 5000;
+  app.listen(port, function() {
+    console.log('Listening on port', port);
   });
-
-  module.exports = app;
 })();
