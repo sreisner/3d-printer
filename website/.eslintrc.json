@@ -1,0 +1,15 @@
+{
+  "extends": "google",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jquery": true
+  },
+  "globals": {
+    "angular": true,
+    "$": true
+  },
+  "rules": {
+    "quotes": [2, "single"]
+  }
+}
