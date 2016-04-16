@@ -1,0 +1,19 @@
+{
+  "name": "3d-printer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api": "./api",
+    "website": "./website",
+    "express": "^4.13.4"
+  }
+}
