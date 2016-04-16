@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "A REST API for managing 3d printer files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shawn.reisner@gmail.com",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "gridfs-stream": "^1.1.1",
+    "mongoose": "^4.4.6",
+    "morgan": "^1.7.0",
+    "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "url": "^0.11.0",
+    "uuid": "^2.0.1"
+  }
+}
