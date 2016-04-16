@@ -1,8 +1,8 @@
 {
-  "name": "printer-api",
+  "name": "api",
   "version": "1.0.0",
   "description": "A REST API for managing 3d printer files",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,6 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
-    "express": "^4.13.4",
     "gridfs-stream": "^1.1.1",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0",
