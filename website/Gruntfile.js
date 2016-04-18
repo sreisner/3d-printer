@@ -71,9 +71,6 @@ module.exports = function(grunt) {
       }
     },
     shell: {
-      npmInstall: {
-        command: 'npm install'
-      },
       cleanup: {
         command: 'rm -rf ./build'
       },
@@ -87,7 +84,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['./site/**/*'],
-        tasks: ['build']
+        tasks: ['dev-build']
       }
     },
     express: {
@@ -112,8 +109,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-shell');
 
-  grunt.registerTask('build', [
-    'shell:npmInstall',
+  grunt.registerTask('prod-build', [
+    'browserify',
+    'uglify',
+    'cssmin',
+    'concat',
+    'shell:cleanup'
+  ]);
+  
+  grunt.registerTask('dev-build', [
     'eslint',
     'browserify',
     'uglify',
