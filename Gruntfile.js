@@ -6,9 +6,17 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('./package.json'),
     eslint: {
-      all: {
+      site: {
         files: {
           src: 'site/**/*.js'
+        },
+        options: {
+          config: '.eslintrc.json'
+        }
+      },
+      node: {
+        files: {
+          src: './*.js'
         },
         options: {
           config: '.eslintrc.json'
@@ -73,12 +81,14 @@ module.exports = function(grunt) {
     shell: {
       cleanup: {
         command: 'rm -rf ./build'
-      },
-      startDatabase: {
-        command: [
-          'if not exist "data" mkdir data',
-          'mongod --dbpath=./data'
-        ].join('&&')
+      }
+    },
+    /* eslint-disable camelcase */
+    external_daemon: {
+    /* eslint-enable camelcase */
+      mongodb: {
+        cmd: 'mongod',
+        args: ['--dbpath=./data']
       }
     },
     watch: {
@@ -93,7 +103,7 @@ module.exports = function(grunt) {
           hostname: '127.0.0.1',
           port: 80,
           bases: path.resolve(__dirname, 'dist'),
-          server: path.resolve(__dirname, 'server.js'),
+          server: path.resolve(__dirname, 'index.js'),
           livereload: true
         }
       }
@@ -107,7 +117,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express');
-  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-shell-spawn');
+  grunt.loadNpmTasks('grunt-external-daemon');
 
   grunt.registerTask('prod-build', [
     'browserify',
@@ -116,9 +127,10 @@ module.exports = function(grunt) {
     'concat',
     'shell:cleanup'
   ]);
-  
+
   grunt.registerTask('dev-build', [
-    'eslint',
+    'eslint:site',
+    'eslint:node',
     'browserify',
     'uglify',
     'cssmin',
@@ -127,7 +139,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('livereload', [
-    'shell:startDatabase',
+    'external_daemon:mongodb',
     'express:site',
     'watch'
   ]);

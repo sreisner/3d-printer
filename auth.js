@@ -11,17 +11,17 @@
     passport.use(new FacebookStrategy({
       clientID: FACEBOOK_APP_ID,
       clientSecret: FACEBOOK_APP_SECRET,
-      callbackURL: "/auth/facebook/callback"
+      callbackURL: '/auth/facebook/callback'
     },
     function(accessToken, refreshToken, profile, done) {
-      app.db.models.User.findOne({ facebookId: profile.id }, function(err, user) {
+      var userModel = app.db.models.User;
+      userModel.findOne({facebookId: profile.id}, function(err, user) {
         if (err) {
-          var user = app.db.models.User.insert({
+          user = app.db.models.User.insert({
             facebookId: profile.id,
             name: profile.displayName,
             userSince: new Date()
           });
-          return done(null, user);
         }
         done(null, user);
       });
@@ -29,12 +29,11 @@
 
     app.get('/auth/facebook', passport.authenticate('facebook'));
     app.get('/auth/facebook/callback',
-      passport.authenticate('facebook', { successRedirect: '/',
-                                          failureRedirect: '/' }));
+      passport.authenticate('facebook', {successRedirect: '/',
+                                         failureRedirect: '/'}));
   }
 
   module.exports = {
     initializeFacebookAuth: initializeFacebookAuth
-  }
-
+  };
 })();

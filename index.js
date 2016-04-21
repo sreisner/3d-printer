@@ -2,14 +2,33 @@
   'use strict';
 
   var express = require('express');
-  var api = require('api');
-  var website = require('website');
+  var bodyParser = require('body-parser');
+  var path = require('path');
+  var cors = require('cors');
+
+  var routes = require('./routes');
+  var db = require('./db');
+  var auth = require('./auth');
 
   var app = express();
-  api.init(app);
-  website.init(app);
 
-  app.listen(80, function() {
-    console.log('App listening on port 80.');
+  const DIST_PATH = path.join(__dirname, 'dist');
+  const SITE_PATH = path.join(__dirname, 'site');
+
+  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(cors());
+  app.db = db.connect('mongodb://localhost/printer');
+  routes.initializeRoutes(app);
+  auth.initializeFacebookAuth(app);
+
+  app.use('/javascript', express.static(path.join(DIST_PATH, 'javascript')));
+  app.use('/css', express.static(path.join(DIST_PATH, 'css')));
+  app.use('/directives', express.static(path.join(SITE_PATH, 'directives')));
+  app.use('/templates', express.static(path.join(SITE_PATH, 'templates')));
+
+  app.get('/', function(request, response) {
+    response.sendFile(path.join(__dirname, 'site', 'index.html'));
   });
+
+  module.exports = app;
 })();
